@@ -65,7 +65,7 @@ app.get('/login',(req,res)=>{
     
     `)
 })
-
+///autentificacion de token
 app.post('/auth',(req,res)=>{
     const {username,password}=req.body;
     const user={username:username};
@@ -107,8 +107,23 @@ app.post("/logout",(req,res)=>{
    
     res.send("sesion cerrada")
 })
-
-
+///
+app.get("/info", (req, res) => {
+    res.send(`
+             <p>Project Path</p>
+              ${process.cwd()}
+             <p>Process ID</p>
+             ${process.pid}
+             <p>NODE version</p>
+             ${process.version}
+             <p>S.O</p>
+             ${process.platform}
+             <p>RSS Reserved Memory</p>
+             ${process.memoryUsage().rss}
+             <p> NODE execute path</p>
+             ${process.execPath}  
+ `);
+});
 
 
 admin = false;
